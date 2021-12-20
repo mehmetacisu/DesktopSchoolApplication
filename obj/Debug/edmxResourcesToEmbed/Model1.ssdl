@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OkulSistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="10" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Durum" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblAlinanDersler">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ogretmen_id" Type="int" Nullable="false" />
+    <Property Name="Ogrenci_id" Type="int" Nullable="false" />
+    <Property Name="Ders_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aciklama" Type="nvarchar(max)" />
+    <Property Name="Durum" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblNotlar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ogrenci_id" Type="int" Nullable="false" />
+    <Property Name="Ders_id" Type="int" Nullable="false" />
+    <Property Name="Ogretmen_id" Type="int" Nullable="false" />
+    <Property Name="Vize" Type="int" />
+    <Property Name="Final" Type="int" />
+  </EntityType>
+  <EntityType Name="tblOgrenci">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="15" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Resim" Type="nvarchar(max)" />
+    <Property Name="Durum" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblOgretmen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Resim" Type="nvarchar(max)" />
+    <Property Name="Durum" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tblVerilenDersler">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ogretmen_id" Type="int" Nullable="false" />
+    <Property Name="Ders_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblAlinanDersler_tblDers">
+    <End Role="tblDers" Type="Self.tblDers" Multiplicity="1" />
+    <End Role="tblAlinanDersler" Type="Self.tblAlinanDersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblAlinanDersler">
+        <PropertyRef Name="Ders_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAlinanDersler_tblOgrenci">
+    <End Role="tblOgrenci" Type="Self.tblOgrenci" Multiplicity="1" />
+    <End Role="tblAlinanDersler" Type="Self.tblAlinanDersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOgrenci">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblAlinanDersler">
+        <PropertyRef Name="Ogrenci_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAlinanDersler_tblOgretmen">
+    <End Role="tblOgretmen" Type="Self.tblOgretmen" Multiplicity="1" />
+    <End Role="tblAlinanDersler" Type="Self.tblAlinanDersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOgretmen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblAlinanDersler">
+        <PropertyRef Name="Ogretmen_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNotlar_tblDers">
+    <End Role="tblDers" Type="Self.tblDers" Multiplicity="1" />
+    <End Role="tblNotlar" Type="Self.tblNotlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblNotlar">
+        <PropertyRef Name="Ders_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNotlar_tblOgrenci">
+    <End Role="tblOgrenci" Type="Self.tblOgrenci" Multiplicity="1" />
+    <End Role="tblNotlar" Type="Self.tblNotlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOgrenci">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblNotlar">
+        <PropertyRef Name="Ogrenci_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNotlar_tblOgretmen">
+    <End Role="tblOgretmen" Type="Self.tblOgretmen" Multiplicity="1" />
+    <End Role="tblNotlar" Type="Self.tblNotlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOgretmen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblNotlar">
+        <PropertyRef Name="Ogretmen_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVerilenDersler_tblDers">
+    <End Role="tblDers" Type="Self.tblDers" Multiplicity="1" />
+    <End Role="tblVerilenDersler" Type="Self.tblVerilenDersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVerilenDersler">
+        <PropertyRef Name="Ders_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblVerilenDersler_tblOgretmen">
+    <End Role="tblOgretmen" Type="Self.tblOgretmen" Multiplicity="1" />
+    <End Role="tblVerilenDersler" Type="Self.tblVerilenDersler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOgretmen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblVerilenDersler">
+        <PropertyRef Name="Ogretmen_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OkulSistemiModelStoreContainer">
+    <EntitySet Name="tblAdmin" EntityType="Self.tblAdmin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAlinanDersler" EntityType="Self.tblAlinanDersler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDers" EntityType="Self.tblDers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblNotlar" EntityType="Self.tblNotlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOgrenci" EntityType="Self.tblOgrenci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOgretmen" EntityType="Self.tblOgretmen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblVerilenDersler" EntityType="Self.tblVerilenDersler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblAlinanDersler_tblDers" Association="Self.FK_tblAlinanDersler_tblDers">
+      <End Role="tblDers" EntitySet="tblDers" />
+      <End Role="tblAlinanDersler" EntitySet="tblAlinanDersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAlinanDersler_tblOgrenci" Association="Self.FK_tblAlinanDersler_tblOgrenci">
+      <End Role="tblOgrenci" EntitySet="tblOgrenci" />
+      <End Role="tblAlinanDersler" EntitySet="tblAlinanDersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAlinanDersler_tblOgretmen" Association="Self.FK_tblAlinanDersler_tblOgretmen">
+      <End Role="tblOgretmen" EntitySet="tblOgretmen" />
+      <End Role="tblAlinanDersler" EntitySet="tblAlinanDersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNotlar_tblDers" Association="Self.FK_tblNotlar_tblDers">
+      <End Role="tblDers" EntitySet="tblDers" />
+      <End Role="tblNotlar" EntitySet="tblNotlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNotlar_tblOgrenci" Association="Self.FK_tblNotlar_tblOgrenci">
+      <End Role="tblOgrenci" EntitySet="tblOgrenci" />
+      <End Role="tblNotlar" EntitySet="tblNotlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNotlar_tblOgretmen" Association="Self.FK_tblNotlar_tblOgretmen">
+      <End Role="tblOgretmen" EntitySet="tblOgretmen" />
+      <End Role="tblNotlar" EntitySet="tblNotlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVerilenDersler_tblDers" Association="Self.FK_tblVerilenDersler_tblDers">
+      <End Role="tblDers" EntitySet="tblDers" />
+      <End Role="tblVerilenDersler" EntitySet="tblVerilenDersler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblVerilenDersler_tblOgretmen" Association="Self.FK_tblVerilenDersler_tblOgretmen">
+      <End Role="tblOgretmen" EntitySet="tblOgretmen" />
+      <End Role="tblVerilenDersler" EntitySet="tblVerilenDersler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

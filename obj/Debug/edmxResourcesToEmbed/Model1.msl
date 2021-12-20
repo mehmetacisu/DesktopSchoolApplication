@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OkulSistemiModelStoreContainer" CdmEntityContainer="OkulSistemiEntities">
+    <EntitySetMapping Name="tblAlinanDersler">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblAlinanDersler">
+        <MappingFragment StoreEntitySet="tblAlinanDersler">
+          <ScalarProperty Name="Ders_id" ColumnName="Ders_id" />
+          <ScalarProperty Name="Ogrenci_id" ColumnName="Ogrenci_id" />
+          <ScalarProperty Name="Ogretmen_id" ColumnName="Ogretmen_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDers">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblDers">
+        <MappingFragment StoreEntitySet="tblDers">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblNotlar">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblNotlar">
+        <MappingFragment StoreEntitySet="tblNotlar">
+          <ScalarProperty Name="Ogretmen_id" ColumnName="Ogretmen_id" />
+          <ScalarProperty Name="Final" ColumnName="Final" />
+          <ScalarProperty Name="Vize" ColumnName="Vize" />
+          <ScalarProperty Name="Ders_id" ColumnName="Ders_id" />
+          <ScalarProperty Name="Ogrenci_id" ColumnName="Ogrenci_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOgrenci">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblOgrenci">
+        <MappingFragment StoreEntitySet="tblOgrenci">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Resim" ColumnName="Resim" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOgretmen">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblOgretmen">
+        <MappingFragment StoreEntitySet="tblOgretmen">
+          <ScalarProperty Name="Resim" ColumnName="Resim" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAdmin">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblAdmin">
+        <MappingFragment StoreEntitySet="tblAdmin">
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblVerilenDersler">
+      <EntityTypeMapping TypeName="OkulSistemiModel.tblVerilenDersler">
+        <MappingFragment StoreEntitySet="tblVerilenDersler">
+          <ScalarProperty Name="Ders_id" ColumnName="Ders_id" />
+          <ScalarProperty Name="Ogretmen_id" ColumnName="Ogretmen_id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
