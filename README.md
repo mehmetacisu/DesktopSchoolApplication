@@ -12,7 +12,7 @@ To put it briefly, we can say that the School Information System.
  * Backend 
      - C#
  * Database
-    - MSSQL
+    - MS SQL
  * ORM
    - Entity Framework
 
