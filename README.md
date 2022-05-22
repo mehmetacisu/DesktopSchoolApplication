@@ -8,9 +8,9 @@ To put it briefly, we can say that the School Information System.
 ## Used Technologies
 
  * Frontend
-    - Windows Forms
+    - [Windows Forms](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/windows-forms-overview?view=netframeworkdesktop-4.8)
  * Backend 
-     - C#
+     * [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
  * Database
     - MS SQL
  * ORM
